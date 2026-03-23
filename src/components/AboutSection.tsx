@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-import aboutStudents from "@/assets/about-students.jpg";
+import aboutStudents from "../assets/about-students.webp";
 
 const features = [
   "ISO 9001:2015 Certified Institution",
