@@ -1,7 +1,7 @@
 import AboutSection from "@/components/AboutSection";
 import Highlights from "@/components/Highlights";
 import { motion } from "framer-motion";
-import heroCampus from "@/assets/hero-campus.jpg";
+import heroCampus from "../assets/about-students.webp";
 
 const About = () => (
   <>
