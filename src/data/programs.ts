@@ -1,5 +1,5 @@
 import programMlt from "@/assets/program-mlt.jpg";
-import programRadiology from "@/assets/program-radiology.jpg";
+import programRadiology from "../assets/program-radiology.webp";
 import programCardiac from "@/assets/program-cardiac.jpg";
 import programDialysis from "@/assets/program-dialysis.jpg";
 import programOt from "../assets/program-ot.webp";
