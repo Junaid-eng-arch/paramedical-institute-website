@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroCampus from "@/assets/hero-campus.jpg";
+import campusView from "../assets/hero-campus.webp";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-[85vh] flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroCampus} alt="Little Flower Institute Campus" className="w-full h-full object-cover" />
+        <img src={campusView} alt="Little Flower Institute Campus" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay/85" />
       </div>
 
