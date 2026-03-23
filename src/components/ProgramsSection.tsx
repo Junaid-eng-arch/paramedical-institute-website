@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { Clock, BookOpen, ArrowRight } from "lucide-react";
+import Reveal from "@/components/Reveal";
 import { programs } from "@/data/programs";
 
 const ProgramsSection = () => {
   return (
     <section id="programs" className="section-padding bg-muted">
       <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
+        <Reveal className="text-center mb-12">
           <p className="text-blue-500 text-sm tracking-widest uppercase mb-2">Our Programs</p>
           <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">
             <span className="block text-foreground">Career-Focused Healthcare</span>
@@ -21,16 +16,13 @@ const ProgramsSection = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Choose from our CTDS-affiliated BSc and BVoc programs designed to prepare you for a successful healthcare career.
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((program, i) => (
-            <motion.div
+            <Reveal
               key={program.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
+              delay={i * 80}
               className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-lg transition-shadow group"
             >
               <div className="h-48 overflow-hidden">
@@ -38,6 +30,8 @@ const ProgramsSection = () => {
                   src={program.image}
                   alt={program.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-6">
@@ -60,7 +54,7 @@ const ProgramsSection = () => {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

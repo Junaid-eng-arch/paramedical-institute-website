@@ -1,18 +1,23 @@
+import { Suspense, lazy } from "react";
 import HeroSection from "@/components/HeroSection";
-import Highlights from "@/components/Highlights";
-import AboutSection from "@/components/AboutSection";
-import ProgramsSection from "@/components/ProgramsSection";
-import CampusSection from "@/components/CampusSection";
-import ContactSection from "@/components/ContactSection";
+import RouteFallback from "@/components/RouteFallback";
+
+const Highlights = lazy(() => import("@/components/Highlights"));
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const ProgramsSection = lazy(() => import("@/components/ProgramsSection"));
+const CampusSection = lazy(() => import("@/components/CampusSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 const Home = () => (
   <>
     <HeroSection />
-    <Highlights />
-    <AboutSection />
-    <ProgramsSection />
-    <CampusSection />
-    <ContactSection />
+    <Suspense fallback={<RouteFallback />}>
+      <Highlights />
+      <AboutSection />
+      <ProgramsSection />
+      <CampusSection />
+      <ContactSection />
+    </Suspense>
   </>
 );
 

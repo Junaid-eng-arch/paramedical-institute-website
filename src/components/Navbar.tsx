@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Mail, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -52,7 +51,6 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
@@ -73,49 +71,43 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden p-2 text-foreground"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Nav */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="md:hidden overflow-hidden bg-card border-t border-border"
+        <div
+          className={`md:hidden overflow-hidden bg-card border-t border-border transition-[max-height,opacity] duration-300 ease-out ${
+            mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col p-4 gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                to={link.to}
+                onClick={() => setMobileOpen(false)}
+                className={`px-4 py-3 text-sm font-medium rounded-md transition-colors ${
+                  location.pathname === link.to ? "text-primary bg-muted" : "text-foreground/80 hover:text-primary hover:bg-muted"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              to="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 px-5 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-lg text-center"
             >
-              <div className="flex flex-col p-4 gap-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    to={link.to}
-                    onClick={() => setMobileOpen(false)}
-                    className={`px-4 py-3 text-sm font-medium rounded-md transition-colors ${
-                      location.pathname === link.to ? "text-primary bg-muted" : "text-foreground/80 hover:text-primary hover:bg-muted"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <Link
-                  to="/contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="mt-2 px-5 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-lg text-center"
-                >
-                  Enquire Now
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              Enquire Now
+            </Link>
+          </div>
+        </div>
       </nav>
     </>
   );

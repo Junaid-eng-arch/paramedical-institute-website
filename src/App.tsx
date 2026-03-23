@@ -1,25 +1,20 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "@/components/Layout";
-import Home from "@/pages/Home";
-import About from "@/pages/About";
-import Programs from "@/pages/Programs";
-import Campus from "@/pages/Campus";
-import Contact from "@/pages/Contact";
-import ProgramDetail from "@/pages/ProgramDetail";
+import RouteFallback from "@/components/RouteFallback";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const Home = lazy(() => import("@/pages/Home"));
+const About = lazy(() => import("@/pages/About"));
+const Programs = lazy(() => import("@/pages/Programs"));
+const Campus = lazy(() => import("@/pages/Campus"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const ProgramDetail = lazy(() => import("@/pages/ProgramDetail"));
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+  <>
+    <BrowserRouter>
+      <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -31,9 +26,9 @@ const App = () => (
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </>
 );
 
 export default App;

@@ -1,8 +1,7 @@
 import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { Clock, BookOpen, ArrowLeft, CheckCircle, GraduationCap, Briefcase } from "lucide-react";
+import Reveal from "@/components/Reveal";
 import { programs } from "@/data/programs";
-import heroCampus from "@/assets/hero-campus.jpg";
 
 const ProgramDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,7 +13,7 @@ const ProgramDetail = () => {
         <div className="text-center">
           <h2 className="font-heading text-2xl text-foreground mb-4">Program Not Found</h2>
           <Link to="/programs" className="text-primary underline hover:opacity-80">
-            ← Back to Programs
+            Back to Programs
           </Link>
         </div>
       </div>
@@ -23,14 +22,20 @@ const ProgramDetail = () => {
 
   return (
     <>
-      {/* Banner */}
       <section className="relative h-72 md:h-96 flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src={program.image} alt={program.title} className="w-full h-full object-cover" />
+          <img
+            src={program.image}
+            alt={program.title}
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
           <div className="absolute inset-0 bg-hero-overlay/80" />
         </div>
         <div className="relative z-10 container mx-auto px-4 pb-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <Reveal>
             <Link to="/programs" className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground text-sm mb-4 transition-colors">
               <ArrowLeft size={16} /> All Programs
             </Link>
@@ -42,22 +47,20 @@ const ProgramDetail = () => {
               <span className="flex items-center gap-1.5"><Clock size={16} /> {program.duration}</span>
               <span className="flex items-center gap-1.5"><BookOpen size={16} /> Full Time</span>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Content */}
       <section className="section-padding">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-3 gap-10">
-            {/* Main Content */}
             <div className="lg:col-span-2 space-y-10">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+              <Reveal delay={100}>
                 <h2 className="font-heading text-2xl text-foreground mb-4">Program Overview</h2>
                 <p className="text-muted-foreground leading-relaxed">{program.details.overview}</p>
-              </motion.div>
+              </Reveal>
 
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+              <Reveal delay={200}>
                 <h2 className="font-heading text-2xl text-foreground mb-4 flex items-center gap-2">
                   <BookOpen size={22} className="text-primary" /> Key Subjects
                 </h2>
@@ -69,9 +72,9 @@ const ProgramDetail = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </Reveal>
 
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+              <Reveal delay={300}>
                 <h2 className="font-heading text-2xl text-foreground mb-4 flex items-center gap-2">
                   <Briefcase size={22} className="text-primary" /> Career Opportunities
                 </h2>
@@ -83,11 +86,10 @@ const ProgramDetail = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </Reveal>
             </div>
 
-            {/* Sidebar */}
-            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="space-y-6">
+            <Reveal delay={200} x={20} y={0} className="space-y-6">
               <div className="bg-card rounded-xl p-6 shadow-sm border border-border">
                 <h3 className="font-heading text-lg font-bold text-foreground mb-4">Program Details</h3>
                 <div className="space-y-4 text-sm">
@@ -121,7 +123,7 @@ const ProgramDetail = () => {
               >
                 Apply for This Program
               </Link>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>

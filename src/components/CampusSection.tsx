@@ -1,8 +1,8 @@
 
-
-import { motion } from "framer-motion";
 import { Building2, UtensilsCrossed, FlaskConical, Hotel, Stethoscope, Users } from "lucide-react";
+import Reveal from "@/components/Reveal";
 import campusView from "@/assets/hero-campus.webp";
+import campusViewMobile from "@/assets/campus-view.jpg";
 
 const facilities = [
   { icon: Building2, title: "5-Acre Campus", description: "Spacious green campus with modern infrastructure", accent: "#0d9488" },
@@ -41,12 +41,7 @@ const CampusSection = () => {
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px", position: "relative" }}>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: "center", marginBottom: "48px" }}
-        >
+        <Reveal style={{ textAlign: "center", marginBottom: "48px" }}>
           <span className="inline-block text-primary font-semibold text-xs tracking-widest uppercase mb-3">
             Campus & Facilities
           </span>
@@ -67,13 +62,10 @@ const CampusSection = () => {
           <p style={{ color: "#64748b", maxWidth: "560px", margin: "0 auto", fontSize: "16px", lineHeight: 1.7 }}>
             Our campus provides a complete ecosystem for learning, living, and growing as a healthcare professional.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Campus Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <Reveal
           style={{
             borderRadius: "20px",
             overflow: "hidden",
@@ -82,21 +74,25 @@ const CampusSection = () => {
             border: "1px solid rgba(13,148,136,0.15)",
           }}
         >
-         <img
-  src={campusView}
-  alt="Little Flower Institute Campus, Aluva"
-  style={{
-    width: "100%",
-    height: "clamp(220px, 35vw, 340px)",
-    objectFit: "cover",
-    objectPosition: "center 40%", // Focuses on the architecture/skyline
-    borderRadius: "12px",
-    display: "block",
-    filter: "brightness(0.95) contrast(1.05)", // Enhances visual depth
-    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)"
-  }}
-/>
-        </motion.div>
+          <img
+            src={campusView}
+            srcSet={`${campusViewMobile} 768w, ${campusView} 1400w`}
+            sizes="(max-width: 768px) 100vw, 1100px"
+            alt="Little Flower Institute Campus, Aluva"
+            loading="lazy"
+            decoding="async"
+            style={{
+              width: "100%",
+              height: "clamp(220px, 35vw, 340px)",
+              objectFit: "cover",
+              objectPosition: "center 40%",
+              borderRadius: "12px",
+              display: "block",
+              filter: "brightness(0.95) contrast(1.05)",
+              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)"
+            }}
+          />
+        </Reveal>
 
         {/* Facility Cards */}
         <div style={{
@@ -105,13 +101,9 @@ const CampusSection = () => {
           gap: "20px",
         }}>
           {facilities.map((facility, i) => (
-            <motion.div
+            <Reveal
               key={facility.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              whileHover={{ y: -4, boxShadow: `0 16px 40px ${facility.accent}22` }}
+              delay={i * 80}
               style={{
                 display: "flex",
                 alignItems: "flex-start",
@@ -121,8 +113,16 @@ const CampusSection = () => {
                 background: "#ffffff",
                 border: `1px solid ${facility.accent}22`,
                 boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-                transition: "box-shadow 0.3s ease, transform 0.3s ease",
+                transition: "box-shadow 0.3s ease, transform 0.3s ease, opacity 0.6s ease-out",
                 cursor: "default",
+                position: "relative",
+              }}
+              className="hover:-translate-y-1"
+              onMouseEnter={(event) => {
+                event.currentTarget.style.boxShadow = `0 16px 40px ${facility.accent}22`;
+              }}
+              onMouseLeave={(event) => {
+                event.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
               }}
             >
               {/* Icon box */}
@@ -164,7 +164,7 @@ const CampusSection = () => {
                 background: facility.accent,
                 opacity: 0.5,
               }} />
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

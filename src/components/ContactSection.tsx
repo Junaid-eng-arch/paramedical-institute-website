@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Send } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", program: "", message: "" });
@@ -14,31 +14,21 @@ const ContactSection = () => {
   return (
     <section id="contact" className="section-padding bg-muted">
       <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
+        <Reveal className="text-center mb-12">
           <p className="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-2">
-  Get In Touch
-</p>
+            Get In Touch
+          </p>
           <h2 className="font-heading text-3xl md:text-4xl text-black mb-4">
-  Start Your <span className="text-black">Healthcare Career</span> Today
-</h2>
+            Start Your <span className="text-black">Healthcare Career</span> Today
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Have questions about admissions? Fill out the form below and our team will reach out to you.
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="grid md:grid-cols-5 gap-8">
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-2 space-y-6"
-          >
+          <Reveal x={-30} y={0} className="md:col-span-2 space-y-6">
             <div className="bg-primary rounded-xl p-8 text-primary-foreground">
               <h3 className="font-heading text-xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-5">
@@ -66,15 +56,10 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-3"
-          >
+          <Reveal x={30} y={0} className="md:col-span-3">
             <form onSubmit={handleSubmit} className="bg-card rounded-xl p-8 shadow-sm border border-border space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
@@ -147,7 +132,7 @@ const ContactSection = () => {
                 Submit Enquiry
               </button>
             </form>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>
