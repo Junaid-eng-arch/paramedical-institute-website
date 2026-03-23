@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Building2, UtensilsCrossed, FlaskConical, Hotel, Stethoscope, Users } from "lucide-react";
-import campusView from "@/assets/campus1.png";
+import campusView from "@/assets/hero-campus.webp";
 
 const facilities = [
   { icon: Building2, title: "5-Acre Campus", description: "Spacious green campus with modern infrastructure", accent: "#0d9488" },
