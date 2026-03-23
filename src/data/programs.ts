@@ -1,9 +1,9 @@
-import programMlt from "@/assets/program-mlt.jpg";
+import programMlt from "../assets/program-mlt.webp";
 import programRadiology from "../assets/program-radiology.webp";
-import programCardiac from "@/assets/program-cardiac.jpg";
-import programDialysis from "@/assets/program-dialysis.jpg";
+import programCardiac from "../assets/program-cardiac.webp";
+import programDialysis from "../assets/program-dialysis.webp";
 import programOt from "../assets/program-ot.webp";
-import programEmergency from "@/assets/program-emergency.png";
+import programEmergency from "../assets/program-emergency.webp";
 
 export interface Program {
   slug: string;
