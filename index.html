@@ -4,26 +4,24 @@
     <!-- Basic Setup -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
 
-    <!-- SEO Title -->
+    <!-- SEO Title & Description -->
     <title>Little Flower Institute of Paramedical Sciences Kerala</title>
-
-    <!-- SEO Description -->
     <meta
       name="description"
       content="Little Flower Institute of Paramedical Sciences - Best paramedical institute in Kerala offering lab training, hostel facilities, and expert faculty."
     />
-
-    <!-- Author -->
     <meta name="author" content="Little Flower Institute" />
-
-    <!-- Keywords (optional but okay) -->
     <meta
       name="keywords"
       content="paramedical institute Kerala, lab technician course, nursing assistant course, medical lab training Kerala"
     />
 
-    <!-- Open Graph (WhatsApp, Facebook Preview) -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://paramedical-institute-website-qt57ao7g1.vercel.app/" />
+
+    <!-- Open Graph / Facebook Preview -->
     <meta property="og:title" content="Little Flower Institute Paramedical" />
     <meta
       property="og:description"
@@ -31,7 +29,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://paramedical-institute-website-qt57ao7g1.vercel.app" />
-    <meta property="og:image" content="/favicon.ico" />
+    <meta property="og:image" content="/og-image.webp" />
 
     <!-- Twitter Preview -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -40,17 +38,50 @@
       name="twitter:description"
       content="Best paramedical institute in Kerala with modern lab and training."
     />
-    <meta name="twitter:image" content="/favicon.ico" />
+    <meta name="twitter:image" content="/og-image.webp" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Favicon (Multiple Sizes) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
     <!-- Theme Color (Mobile Browser UI) -->
     <meta name="theme-color" content="#0d9488" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Little Flower Institute of Paramedical Sciences",
+      "url": "https://paramedical-institute-website-qt57ao7g1.vercel.app",
+      "logo": "https://paramedical-institute-website-qt57ao7g1.vercel.app/favicon.ico",
+      "sameAs": [
+        "https://www.facebook.com/yourpage",
+        "https://www.linkedin.com/company/yourcompany",
+        "https://twitter.com/yourtwitter"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Your Street Address",
+        "addressLocality": "Kerala",
+        "postalCode": "XXXXXX",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
+    <!-- Optional: CSS -->
+    <link rel="stylesheet" href="/style.css">
   </head>
 
   <body>
+    <!-- React Root -->
     <div id="root"></div>
+
+    <!-- Example React Component -->
+    <!-- You can add homepage content inside React components -->
 
     <!-- React Entry -->
     <script type="module" src="/src/main.tsx"></script>

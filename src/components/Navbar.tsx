@@ -17,7 +17,7 @@ const TopBar = () => (
       <div className="flex items-center gap-6">
         <a href="tel:+910000000000" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Phone size={14} />
-          <span>+91 484 XXX XXXX</span>
+          <span>+91 484 5567865 </span>
         </a>
         <a href="mailto:info@littleflowerparamedical.in" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Mail size={14} />
